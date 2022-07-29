@@ -1,7 +1,22 @@
+/* 
+  SPACING SYSTEM (px)
+  2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+  FONT SIZE SYSTEM (px)
+  10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+ */
+
+/* GENERAL */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  /* COLORS */
+  --primary-color: #99e9f2;
+  --secondary-color: #f42c04;
+  --shade-1: #66d9e8;
+  --grey-1: #333;
 }
 
 html {
@@ -10,4 +25,92 @@ html {
 
 body {
   font-family: "Trebuchet MS", sans-serif;
+}
+
+.container {
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--grey-1);
+  border: none;
+  border-radius: 7px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+button:hover {
+  background-color: var(--shade-1);
+  color: white;
+}
+
+/* REUSABLE */
+.invisible {
+  visibility: hidden;
+}
+
+/* HEADER */
+header {
+  font-size: 2.4rem;
+  color: var(--grey-1);
+  margin-top: 9.6rem;
+  margin-bottom: 9.6rem;
+}
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.add-contact {
+  position: absolute;
+  right: 0;
+  font-size: 2.4rem;
+}
+
+/* MAIN */
+.contacts {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 3fr 2fr auto auto;
+  gap: 1rem 2rem;
+  align-items: center;
+  justify-items: start;
+
+  font-size: 2.4rem;
+  color: var(--grey-1);
+}
+.table-header {
+  font-size: 1.6rem;
+}
+.table-header.email,
+.table-header.phone {
+  justify-self: center;
+}
+.edit,
+.delete {
+  justify-self: center;
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+.delete {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    margin: 0 3.2rem;
+  }
+}
+
+@media (max-width: 911px) {
+  html {
+    font-size: 50%;
+  }
+  .contacts {
+    column-gap: 1rem;
+  }
 }
