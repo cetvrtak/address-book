@@ -49,7 +49,7 @@
           <input
           class="input-field"
             type="text"
-            id="firstname"
+            id="add-firstname"
             name="firstname"
           />
         </div>
@@ -58,7 +58,7 @@
           <input
           class="input-field"
             type="text"
-            id="lastname"
+            id="add-lastname"
             name="lastname"
           />
         </div>
@@ -67,7 +67,7 @@
           <input
           class="input-field"
             type="text"
-            id="email"
+            id="add-email"
             name="email"
           />
         </div>
@@ -76,14 +76,55 @@
           <input
           class="input-field"
             type="text"
-            id="phone"
+            id="add-phone"
             name="phone"
           />
         </div>
         <input class="btn btn-add" type="submit" value="Add" />
       </form>
     </div>
-    <div class="modal-edit"></div>
+    <div class="modal-edit hidden">
+      <p class="modal-title">Edit Contact</p>
+      <form action="index.html" class="add-contact-form">
+        <div class="input-box">
+          <label for="firstname">First Name</label>
+          <input
+          class="input-field"
+            type="text"
+            id="edit-firstname"
+            name="firstname"
+          />
+        </div>
+        <div class="input-box">
+          <label for="lastname">Last Name</label>
+          <input
+          class="input-field"
+            type="text"
+            id="edit-lastname"
+            name="lastname"
+          />
+        </div>
+        <div class="input-box">
+          <label for="email">E-mail</label>
+          <input
+          class="input-field"
+            type="text"
+            id="edit-email"
+            name="email"
+          />
+        </div>
+        <div class="input-box">
+          <label for="phone">Phone</label>
+          <input
+          class="input-field"
+            type="text"
+            id="edit-phone"
+            name="phone"
+          />
+        </div>
+        <input class="btn btn-edit" type="submit" value="Save" />
+      </form>
+    </div>
 
     <script src="script.js"></script>
   </body>

@@ -160,7 +160,8 @@ header {
 }
 
 /* ADD */
-.modal-add {
+.modal-add,
+.modal-edit {
   position: absolute;
   top: 50%;
   left: 50%;
