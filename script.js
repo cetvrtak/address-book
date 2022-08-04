@@ -41,29 +41,41 @@ const btnAdd = document.querySelector(".btn-add");
 const btnEdit = document.querySelector(".btn-edit");
 
 // Functions
+function createHeader() {
+  contactsEl.innerHTML = `
+    <div class="table-header id">#</div>
+    <div class="table-header name">Name</div>
+    <div class="table-header lastname">Lastname</div>
+    <div class="table-header fullname">Full Name</div>
+    <div class="table-header email">E-mail</div>
+    <div class="table-header phone">Phone</div>
+    <div class="table-header buttons invisible"></div>`;
+}
 function insertContactHTML(el, i) {
   contactsEl.insertAdjacentHTML(
     "beforeend",
-    `<div class="id">${i + 1}</div>
-     <div class="name">${el.firstName}</div>
-     <div class="lastname">${el.lastName}</div>
-     <div class="fullname">${el.firstName} ${el.lastName}</div>
-     <div class="email">${el.email}</div>
-     <div class="phone">${el.phone}</div>
-     <div class="buttons">
-         <button class="btn open">
-             <ion-icon name="open-outline"></ion-icon>
-         </button>
-         <button class="btn edit" data-id="${i}">
-             <ion-icon name="pencil-outline"></ion-icon>
-         </button>
-         <button class="btn delete">
-             <ion-icon name="trash-outline"></ion-icon>
-         </button>
-     </div>`
+    `
+    <div class="id">${i + 1}</div>
+    <div class="name">${el.firstName}</div>
+    <div class="lastname">${el.lastName}</div>
+    <div class="fullname">${el.firstName} ${el.lastName}</div>
+    <div class="email">${el.email}</div>
+    <div class="phone">${el.phone}</div>
+    <div class="buttons">
+        <button class="btn open">
+            <ion-icon name="open-outline"></ion-icon>
+        </button>
+        <button class="btn edit" data-id="${i}">
+            <ion-icon name="pencil-outline"></ion-icon>
+        </button>
+        <button class="btn delete">
+            <ion-icon name="trash-outline"></ion-icon>
+        </button>
+    </div>`
   );
 }
 function displayContacts() {
+  createHeader();
   for (let i = 0; i < contacts.length; i++) {
     insertContactHTML(contacts[i], i);
   }
@@ -82,10 +94,11 @@ function addContact(newContact) {
   insertContactHTML(newContact, contacts.length - 1);
 }
 function saveContact(id) {
-  contacts[id].firstName = editFirstNameEl.textContent;
-  contacts[id].lastName = editLastNameEl.textContent;
-  contacts[id].email = editEmailEl.textContent;
-  contacts[id].phone = editPhoneEl.textContent;
+  contacts[id].firstName = editFirstNameEl.value;
+  contacts[id].lastName = editLastNameEl.value;
+  contacts[id].email = editEmailEl.value;
+  contacts[id].phone = editPhoneEl.value;
+  displayContacts();
 }
 function updateStorage() {
   localStorage.contacts = JSON.stringify(contacts);
