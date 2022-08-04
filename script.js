@@ -115,7 +115,7 @@ function updateStorage() {
 
 // Event listeners
 window.addEventListener("load", () => {
-  if (localStorage.contacts) {
+  if (localStorage.contacts && JSON.parse(localStorage.contacts)) {
     contacts = JSON.parse(localStorage.contacts);
   }
   displayContacts();
@@ -142,6 +142,8 @@ let id;
 contactsEl.addEventListener("click", function (e) {
   e.preventDefault();
   const editBtn = e.target.closest(".edit");
+  const deleteBtn = e.target.closest(".delete");
+
   if (editBtn) {
     openModal.call(modalEditEl);
 
@@ -150,10 +152,7 @@ contactsEl.addEventListener("click", function (e) {
     editLastNameEl.value = contacts[id].lastName;
     editEmailEl.value = contacts[id].email;
     editPhoneEl.value = contacts[id].phone;
-  }
-
-  const deleteBtn = e.target.closest(".delete");
-  if (deleteBtn) {
+  } else if (deleteBtn) {
     deleteContact(deleteBtn.dataset.id);
   }
 });
