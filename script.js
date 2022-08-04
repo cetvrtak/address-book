@@ -68,7 +68,7 @@ function insertContactHTML(el, i) {
         <button class="btn edit" data-id="${i}">
             <ion-icon name="pencil-outline"></ion-icon>
         </button>
-        <button class="btn delete">
+        <button class="btn delete" data-id="${i}">
             <ion-icon name="trash-outline"></ion-icon>
         </button>
     </div>`
@@ -98,6 +98,10 @@ function saveContact(id) {
   contacts[id].lastName = editLastNameEl.value;
   contacts[id].email = editEmailEl.value;
   contacts[id].phone = editPhoneEl.value;
+  displayContacts();
+}
+function deleteContact(id) {
+  contacts.splice(id, 1);
   displayContacts();
 }
 function updateStorage() {
@@ -141,6 +145,11 @@ contactsEl.addEventListener("click", function (e) {
     editLastNameEl.value = contacts[id].lastName;
     editEmailEl.value = contacts[id].email;
     editPhoneEl.value = contacts[id].phone;
+  }
+
+  const deleteBtn = e.target.closest(".delete");
+  if (deleteBtn) {
+    deleteContact(deleteBtn.dataset.id);
   }
 });
 
