@@ -92,6 +92,11 @@ function closeModal() {
 function addContact(newContact) {
   contacts.push(newContact);
   insertContactHTML(newContact, contacts.length - 1);
+  clearInputFields();
+}
+function clearInputFields() {
+  const inputFields = modalAddEl.querySelectorAll(".input-field");
+  inputFields.forEach((el) => (el.value = ""));
 }
 function saveContact(id) {
   contacts[id].firstName = editFirstNameEl.value;
