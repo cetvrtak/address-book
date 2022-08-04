@@ -1,6 +1,6 @@
 "use_strict";
 
-let contacts;
+let contacts = [];
 // let contacts = [
 //   {
 //     firstName: "Stevo",
@@ -115,7 +115,7 @@ function updateStorage() {
 
 // Event listeners
 window.addEventListener("load", () => {
-  if (localStorage.contacts) {
+  if (localStorage.contacts && JSON.parse(localStorage.contacts).length) {
     contacts = JSON.parse(localStorage.contacts);
   }
   displayContacts();
