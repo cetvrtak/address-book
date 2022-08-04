@@ -1,25 +1,26 @@
 "use_strict";
 
-const contacts = [
-  {
-    firstName: "Stevo",
-    lastName: "Iliskovic",
-    email: "stevoiliskovic@gmail.com",
-    phone: "+38766230926",
-  },
-  {
-    firstName: "Patrick",
-    lastName: "Mahomes",
-    email: "patmahomes@gmail.com",
-    phone: "+901234567",
-  },
-  {
-    firstName: "Russel",
-    lastName: "Wilson",
-    email: "dangeruss@gmail.com",
-    phone: "+18005551234",
-  },
-];
+let contacts;
+// let contacts = [
+//   {
+//     firstName: "Stevo",
+//     lastName: "Iliskovic",
+//     email: "stevoiliskovic@gmail.com",
+//     phone: "+38766230926",
+//   },
+//   {
+//     firstName: "Patrick",
+//     lastName: "Mahomes",
+//     email: "patmahomes@gmail.com",
+//     phone: "+901234567",
+//   },
+//   {
+//     firstName: "Russel",
+//     lastName: "Wilson",
+//     email: "dangeruss@gmail.com",
+//     phone: "+18005551234",
+//   },
+// ];
 
 const modalAddEl = document.querySelector(".modal-add");
 const addFirstNameEl = document.querySelector("#add-firstname");
@@ -44,22 +45,22 @@ function insertContactHTML(el, i) {
   contactsEl.insertAdjacentHTML(
     "beforeend",
     `<div class="id">${i + 1}</div>
-          <div class="name">${el.firstName}</div>
-          <div class="lastname">${el.lastName}</div>
-          <div class="fullname">${el.firstName} ${el.lastName}</div>
-          <div class="email">${el.email}</div>
-          <div class="phone">${el.phone}</div>
-          <div class="buttons">
-              <button class="btn open">
-                  <ion-icon name="open-outline"></ion-icon>
-              </button>
-              <button class="btn edit" data-id="${i}">
-                  <ion-icon name="pencil-outline"></ion-icon>
-              </button>
-              <button class="btn delete">
-                  <ion-icon name="trash-outline"></ion-icon>
-              </button>
-          </div>`
+     <div class="name">${el.firstName}</div>
+     <div class="lastname">${el.lastName}</div>
+     <div class="fullname">${el.firstName} ${el.lastName}</div>
+     <div class="email">${el.email}</div>
+     <div class="phone">${el.phone}</div>
+     <div class="buttons">
+         <button class="btn open">
+             <ion-icon name="open-outline"></ion-icon>
+         </button>
+         <button class="btn edit" data-id="${i}">
+             <ion-icon name="pencil-outline"></ion-icon>
+         </button>
+         <button class="btn delete">
+             <ion-icon name="trash-outline"></ion-icon>
+         </button>
+     </div>`
   );
 }
 function displayContacts() {
@@ -67,8 +68,6 @@ function displayContacts() {
     insertContactHTML(contacts[i], i);
   }
 }
-displayContacts();
-
 function openModal() {
   this.classList.remove("hidden");
   overlayEl.classList.remove("hidden");
@@ -88,10 +87,23 @@ function saveContact(id) {
   contacts[id].email = editEmailEl.textContent;
   contacts[id].phone = editPhoneEl.textContent;
 }
+function updateStorage() {
+  localStorage.contacts = JSON.stringify(contacts);
+}
 
 // Event listeners
+window.addEventListener("load", () => {
+  if (localStorage.contacts) {
+    contacts = JSON.parse(localStorage.contacts);
+  }
+  displayContacts();
+});
+window.addEventListener("beforeunload", updateStorage);
+
 addNewContact.addEventListener("click", openModal.bind(modalAddEl));
+
 overlayEl.addEventListener("click", closeModal);
+
 btnAdd.addEventListener("click", (e) => {
   e.preventDefault();
   closeModal();
