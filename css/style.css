@@ -18,6 +18,7 @@
   --secondary-color: #f42c04;
   --shade-secondary: #dd2803;
   --grey-1: #333;
+  --grey-2: #777;
 }
 
 html {
@@ -73,6 +74,7 @@ input {
   font-size: 2.4rem;
 }
 label {
+  color: var(--grey-2);
   font-size: 2rem;
   width: 30%;
 }
@@ -170,6 +172,7 @@ header {
   background-color: #fff;
   padding: 2.4rem 4.8rem;
   border-radius: 11px;
+  width: 60%;
 }
 
 .add-contact-form {
