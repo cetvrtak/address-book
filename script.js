@@ -34,11 +34,18 @@ const editLastNameEl = document.querySelector("#edit-lastname");
 const editEmailEl = document.querySelector("#edit-email");
 const editPhoneEl = document.querySelector("#edit-phone");
 
+const modalOpenEl = document.querySelector(".modal-open");
+const openFullnameEl = document.querySelector(".modal-open-fullname");
+const openEmailEl = document.querySelector(".modal-open-email");
+const openPhoneEl = document.querySelector(".modal-open-phone");
+const modalCloseEl = document.querySelector(".modal-close");
+
 const overlayEl = document.querySelector(".overlay");
 const addNewContact = document.querySelector(".add-contact");
 const contactsEl = document.querySelector(".contacts");
 const btnAdd = document.querySelector(".btn-add");
 const btnEdit = document.querySelector(".btn-edit");
+const btnOpen = document.querySelector(".btn-open");
 
 // Functions
 function createHeader() {
@@ -62,7 +69,7 @@ function insertContactHTML(el, i) {
     <div class="email">${el.email}</div>
     <div class="phone">${el.phone}</div>
     <div class="buttons">
-        <button class="btn open">
+        <button class="btn open" data-id="${i}">
             <ion-icon name="open-outline"></ion-icon>
         </button>
         <button class="btn edit" data-id="${i}">
@@ -87,6 +94,7 @@ function openModal() {
 function closeModal() {
   modalAddEl.classList.add("hidden");
   modalEditEl.classList.add("hidden");
+  modalOpenEl.classList.add("hidden");
   overlayEl.classList.add("hidden");
 }
 function addContact(newContact) {
@@ -108,6 +116,12 @@ function saveContact(id) {
 function deleteContact(id) {
   contacts.splice(id, 1);
   displayContacts();
+}
+function showContactDetails(id) {
+  openFullnameEl.textContent = `${contacts[id].firstName} ${contacts[id].lastName}`;
+  openEmailEl.textContent = contacts[id].email;
+  openPhoneEl.textContent = contacts[id].phone;
+  openModal.call(modalOpenEl);
 }
 function updateStorage() {
   localStorage.contacts = JSON.stringify(contacts);
@@ -143,6 +157,7 @@ contactsEl.addEventListener("click", function (e) {
   e.preventDefault();
   const editBtn = e.target.closest(".edit");
   const deleteBtn = e.target.closest(".delete");
+  const openBtn = e.target.closest(".open");
 
   if (editBtn) {
     openModal.call(modalEditEl);
@@ -154,6 +169,8 @@ contactsEl.addEventListener("click", function (e) {
     editPhoneEl.value = contacts[id].phone;
   } else if (deleteBtn) {
     deleteContact(deleteBtn.dataset.id);
+  } else if (openBtn) {
+    showContactDetails(openBtn.dataset.id);
   }
 });
 
@@ -162,3 +179,5 @@ btnEdit.addEventListener("click", function (e) {
   closeModal();
   saveContact(id);
 });
+
+modalCloseEl.addEventListener("click", closeModal);

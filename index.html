@@ -40,90 +40,105 @@
         </div>
       </main>
 
-    <div class="overlay hidden"></div>
-    <div class="modal-add hidden">
-      <p class="modal-title">Add New Contact</p>
-      <form action="index.html" class="add-contact-form">
-        <div class="input-box">
-          <label for="firstname">First Name</label>
-          <input
-          class="input-field"
-            type="text"
-            id="add-firstname"
-            name="firstname"
-          />
+      <div class="overlay hidden"></div>
+      <div class="modal-add hidden">
+        <p class="modal-title">Add New Contact</p>
+        <form action="index.html" class="add-contact-form">
+          <div class="input-box">
+            <label for="firstname">First Name</label>
+            <input
+              class="input-field"
+              type="text"
+              id="add-firstname"
+              name="firstname"
+            />
+          </div>
+          <div class="input-box">
+            <label for="lastname">Last Name</label>
+            <input
+              class="input-field"
+              type="text"
+              id="add-lastname"
+              name="lastname"
+            />
+          </div>
+          <div class="input-box">
+            <label for="email">E-mail</label>
+            <input
+              class="input-field"
+              type="text"
+              id="add-email"
+              name="email"
+            />
+          </div>
+          <div class="input-box">
+            <label for="phone">Phone</label>
+            <input
+              class="input-field"
+              type="text"
+              id="add-phone"
+              name="phone"
+            />
+          </div>
+          <input class="btn btn-add" type="submit" value="Add" />
+        </form>
+      </div>
+      <div class="modal-edit hidden">
+        <p class="modal-title">Edit Contact</p>
+        <form action="index.html" class="add-contact-form">
+          <div class="input-box">
+            <label for="firstname">First Name</label>
+            <input
+              class="input-field"
+              type="text"
+              id="edit-firstname"
+              name="firstname"
+            />
+          </div>
+          <div class="input-box">
+            <label for="lastname">Last Name</label>
+            <input
+              class="input-field"
+              type="text"
+              id="edit-lastname"
+              name="lastname"
+            />
+          </div>
+          <div class="input-box">
+            <label for="email">E-mail</label>
+            <input
+              class="input-field"
+              type="text"
+              id="edit-email"
+              name="email"
+            />
+          </div>
+          <div class="input-box">
+            <label for="phone">Phone</label>
+            <input
+              class="input-field"
+              type="text"
+              id="edit-phone"
+              name="phone"
+            />
+          </div>
+          <input class="btn btn-edit" type="submit" value="Save" />
+        </form>
+      </div>
+      <div class="modal-open hidden">
+        <ion-icon class="modal-close" name="close-circle-outline"></ion-icon>
+        <div class="contact-details">
+          <h2 class="modal-open-fullname"></h2>
+          <div class="show-field">
+            <ion-icon name="at-outline"></ion-icon>
+            <div class="modal-open-email"></div>
+          </div>
+          <div class="show-field">
+            <ion-icon name="phone-portrait-outline"></ion-icon>
+            <div class="modal-open-phone"></div>
+          </div>
         </div>
-        <div class="input-box">
-          <label for="lastname">Last Name</label>
-          <input
-          class="input-field"
-            type="text"
-            id="add-lastname"
-            name="lastname"
-          />
-        </div>
-        <div class="input-box">
-          <label for="email">E-mail</label>
-          <input
-          class="input-field"
-            type="text"
-            id="add-email"
-            name="email"
-          />
-        </div>
-        <div class="input-box">
-          <label for="phone">Phone</label>
-          <input
-          class="input-field"
-            type="text"
-            id="add-phone"
-            name="phone"
-          />
-        </div>
-        <input class="btn btn-add" type="submit" value="Add" />
-      </form>
-    </div>
-    <div class="modal-edit hidden">
-      <p class="modal-title">Edit Contact</p>
-      <form action="index.html" class="add-contact-form">
-        <div class="input-box">
-          <label for="firstname">First Name</label>
-          <input
-          class="input-field"
-            type="text"
-            id="edit-firstname"
-            name="firstname"
-          />
-        </div>
-        <div class="input-box">
-          <label for="lastname">Last Name</label>
-          <input
-          class="input-field"
-            type="text"
-            id="edit-lastname"
-            name="lastname"
-          />
-        </div>
-        <div class="input-box">
-          <label for="email">E-mail</label>
-          <input
-          class="input-field"
-            type="text"
-            id="edit-email"
-            name="email"
-          />
-        </div>
-        <div class="input-box">
-          <label for="phone">Phone</label>
-          <input
-          class="input-field"
-            type="text"
-            id="edit-phone"
-            name="phone"
-          />
-        </div>
-        <input class="btn btn-edit" type="submit" value="Save" />
-      </form>
+      </div>
     </div>
 
     <script src="script.js"></script>
