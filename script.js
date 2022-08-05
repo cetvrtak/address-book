@@ -38,7 +38,7 @@ const modalOpenEl = document.querySelector(".modal-open");
 const openFullnameEl = document.querySelector(".modal-open-fullname");
 const openEmailEl = document.querySelector(".modal-open-email");
 const openPhoneEl = document.querySelector(".modal-open-phone");
-const modalCloseEl = document.querySelector(".modal-close");
+const modalCloseEls = document.querySelectorAll(".modal-close");
 
 const overlayEl = document.querySelector(".overlay");
 const addNewContact = document.querySelector(".add-contact");
@@ -180,4 +180,4 @@ btnEdit.addEventListener("click", function (e) {
   saveContact(id);
 });
 
-modalCloseEl.addEventListener("click", closeModal);
+modalCloseEls.forEach((el) => el.addEventListener("click", closeModal));
