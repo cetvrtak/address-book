@@ -44,6 +44,11 @@
   .open {
     display: block;
   }
+  .modal-add,
+  .modal-edit,
+  .modal-open {
+    width: 75%;
+  }
   .input-box {
     flex-direction: column;
     align-items: flex-start;
@@ -77,6 +82,6 @@
   .modal-add,
   .modal-edit,
   .modal-open {
-    width: 70%;
+    width: 90%;
   }
 }

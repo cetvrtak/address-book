@@ -180,7 +180,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 1.2rem;
+  gap: 2.4rem;
 }
 .input-box {
   width: 100%;
