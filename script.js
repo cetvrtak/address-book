@@ -23,12 +23,14 @@ let contacts = [];
 // ];
 
 const modalAddEl = document.querySelector(".modal-add");
+const addContactForm = document.querySelector(".add-contact-form");
 const addFirstNameEl = document.querySelector("#add-firstname");
 const addLastNameEl = document.querySelector("#add-lastname");
 const addEmailEl = document.querySelector("#add-email");
 const addPhoneEl = document.querySelector("#add-phone");
 
 const modalEditEl = document.querySelector(".modal-edit");
+const editContactForm = document.querySelector(".edit-contact-form");
 const editFirstNameEl = document.querySelector("#edit-firstname");
 const editLastNameEl = document.querySelector("#edit-lastname");
 const editEmailEl = document.querySelector("#edit-email");
@@ -142,6 +144,7 @@ overlayEl.addEventListener("click", closeModal);
 
 btnAdd.addEventListener("click", (e) => {
   e.preventDefault();
+  if (!validateForm(e.target.closest("form"))) return;
   closeModal();
   const newContact = {
     firstName: addFirstNameEl.value,
@@ -176,8 +179,72 @@ contactsEl.addEventListener("click", function (e) {
 
 btnEdit.addEventListener("click", function (e) {
   e.preventDefault();
+  if (!validateForm(e.target.closest("form"))) return;
   closeModal();
   saveContact(id);
 });
 
 modalCloseEls.forEach((el) => el.addEventListener("click", closeModal));
+
+// VALIDATION
+function validateForm(form) {
+  // Select all input elements
+  const names = form.querySelectorAll(".name");
+  const email = form.querySelector(".email");
+  const phone = form.querySelector(".phone");
+
+  // Validate each element
+  for (const name of names) {
+    if (name.value.length < 3 || name.value.length > 20) return;
+  }
+  if (!email.value.includes("@")) return;
+  if (!/\+[0-9]{10}[0-9]+/.test(phone.value)) return;
+
+  return true;
+}
+
+// validateForm(addContactForm);
+// validateForm(editContactForm);
+
+// function validateForm(form) {
+//   const inputEls = form.querySelectorAll(".input-field");
+//   console.log(inputEls);
+//   inputEls.forEach((el) => {
+//     el.addEventListener("keyup", function () {
+//       if (
+//         el.classList.includes(".firstname") ||
+//         el.classList.includes(".lastname")
+//       )
+//         validateElement(el, el.value.length < 3 || el.value.length > 20);
+//       else if (el.classList.includes(".email"))
+//         validateElement(el, !el.value.includes("@"));
+//       else if (el.classList.includes(".phone"))
+//         validateElement(el, !/\+[0-9]{10}[0-9]+/.test(el.value));
+//     });
+//   });
+// }
+
+// function validateElement(el, test) {
+//   if (test) {
+//     el.closest(".input-box")
+//       .querySelector(".validation-box")
+//       .classList.remove("invisible");
+//   } else {
+//     el.closest(".input-box")
+//       .querySelector(".validation-box")
+//       .classList.add("invisible");
+//   }
+// }
+
+// function anyFieldEmpty(e) {
+//   const form = e.target.closest("form");
+//   const inputFieldEls = form.querySelectorAll(".input-field");
+
+//   let state = false;
+//   inputFieldEls.forEach((el) => {
+//     if (el.value == "") {
+//       state = true;
+//     }
+//   });
+//   return state;
+// }

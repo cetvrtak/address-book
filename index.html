@@ -48,38 +48,48 @@
           <div class="input-box">
             <label for="firstname">First Name</label>
             <input
-              class="input-field"
+              class="input-field name"
               type="text"
               id="add-firstname"
               name="firstname"
             />
+            <div class="validation-box invisible">
+              Must contain 3 - 20 characters
+            </div>
           </div>
           <div class="input-box">
             <label for="lastname">Last Name</label>
             <input
-              class="input-field"
+              class="input-field name"
               type="text"
               id="add-lastname"
               name="lastname"
             />
+            <div class="validation-box invisible">
+              Must contain 3 - 20 characters
+            </div>
           </div>
           <div class="input-box">
             <label for="email">E-mail</label>
             <input
-              class="input-field"
+              class="input-field email"
               type="text"
               id="add-email"
               name="email"
             />
+            <div class="validation-box invisible">Invalid e-mail</div>
           </div>
           <div class="input-box">
             <label for="phone">Phone</label>
             <input
-              class="input-field"
+              class="input-field phone"
               type="text"
               id="add-phone"
               name="phone"
             />
+            <div class="validation-box invisible">
+              Must start with a "+" sign and contain at least 10 digits
+            </div>
           </div>
           <input class="btn btn-add" type="submit" value="Add" />
         </form>
@@ -87,42 +97,52 @@
       <div class="modal-edit hidden">
         <ion-icon class="modal-close" name="close-circle-outline"></ion-icon>
         <p class="modal-title">Edit Contact</p>
-        <form action="index.html" class="add-contact-form">
+        <form action="index.html" class="edit-contact-form">
           <div class="input-box">
             <label for="firstname">First Name</label>
             <input
-              class="input-field"
+              class="input-field name"
               type="text"
               id="edit-firstname"
               name="firstname"
             />
+            <div class="validation-box invisible">
+              Must contain 3 - 20 characters
+            </div>
           </div>
           <div class="input-box">
             <label for="lastname">Last Name</label>
             <input
-              class="input-field"
+              class="input-field name"
               type="text"
               id="edit-lastname"
               name="lastname"
             />
+            <div class="validation-box invisible">
+              Must contain 3 - 20 characters
+            </div>
           </div>
           <div class="input-box">
             <label for="email">E-mail</label>
             <input
-              class="input-field"
+              class="input-field email"
               type="text"
               id="edit-email"
               name="email"
             />
+            <div class="validation-box invisible">Invalid e-mail</div>
           </div>
           <div class="input-box">
             <label for="phone">Phone</label>
             <input
-              class="input-field"
+              class="input-field phone"
               type="text"
               id="edit-phone"
               name="phone"
             />
+            <div class="validation-box invisible">
+              Must start with a "+" sign and contain at least 10 digits
+            </div>
           </div>
           <input class="btn btn-edit" type="submit" value="Save" />
         </form>

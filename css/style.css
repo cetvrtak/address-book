@@ -175,7 +175,8 @@ header {
   width: 35%;
 }
 
-.add-contact-form {
+.add-contact-form,
+.edit-contact-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -188,11 +189,20 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 0.8rem;
+  position: relative;
 }
 .input-field {
   width: 75%;
   border: none;
   border-bottom: 1px solid var(--grey-1);
+}
+.validation-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: red;
+  transform: translateY(125%);
+  font-size: 1.2rem;
 }
 .btn-add {
   padding: 0.4rem 3.2rem;
