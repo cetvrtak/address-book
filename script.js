@@ -189,18 +189,24 @@ modalCloseEls.forEach((el) => el.addEventListener("click", closeModal));
 // VALIDATION
 function validateForm(form) {
   // Select all input elements
-  const names = form.querySelectorAll(".name");
+  const firstName = form.querySelector(".firstname");
+  const lastName = form.querySelector(".lastname");
   const email = form.querySelector(".email");
   const phone = form.querySelector(".phone");
 
   // Validate each element
-  for (const name of names) {
-    if (name.value.length < 3 || name.value.length > 20) return;
-  }
-  if (!email.value.includes("@")) return;
-  if (!/\+[0-9]{10}[0-9]+/.test(phone.value)) return;
+  const firstNameValid = validate(
+    firstName,
+    firstName.value.length >= 3 && firstName.value.length <= 20
+  );
+  const lastNameValid = validate(
+    lastName,
+    lastName.value.length >= 3 && lastName.value.length <= 20
+  );
+  const emailValid = validate(email, email.value.includes("@"));
+  const phoneValid = validate(phone, /\+[0-9]{10}[0-9]+/.test(phone.value));
 
-  return true;
+  return firstNameValid && lastNameValid && emailValid && phoneValid;
 }
 
 // validateForm(addContactForm);
@@ -224,17 +230,20 @@ function validateForm(form) {
 //   });
 // }
 
-// function validateElement(el, test) {
-//   if (test) {
-//     el.closest(".input-box")
-//       .querySelector(".validation-box")
-//       .classList.remove("invisible");
-//   } else {
-//     el.closest(".input-box")
-//       .querySelector(".validation-box")
-//       .classList.add("invisible");
-//   }
-// }
+function validate(el, test) {
+  // If test not passed - display error message
+  if (!test) {
+    el.closest(".input-box")
+      .querySelector(".validation-box")
+      .classList.remove("invisible");
+    return;
+  } else {
+    el.closest(".input-box")
+      .querySelector(".validation-box")
+      .classList.add("invisible");
+  }
+  return true;
+}
 
 // function anyFieldEmpty(e) {
 //   const form = e.target.closest("form");
