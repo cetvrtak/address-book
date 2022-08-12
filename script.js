@@ -205,8 +205,16 @@ function validateForm(form) {
     lastName,
     lastName.value.length >= 3 && lastName.value.length <= 20
   );
-  const emailValid = validate(email, email.value.includes("@"));
-  const phoneValid = validate(phone, /\+[0-9]{10}[0-9]+/.test(phone.value));
+  const emailValid = validate(
+    email,
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      email.value
+    )
+  );
+  const phoneValid = validate(
+    phone,
+    /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/.test(phone.value)
+  );
 
   return firstNameValid && lastNameValid && emailValid && phoneValid;
 }
