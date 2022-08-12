@@ -1,26 +1,6 @@
 "use_strict";
 
 let contacts = [];
-// let contacts = [
-//   {
-//     firstName: "Stevo",
-//     lastName: "Iliskovic",
-//     email: "stevoiliskovic@gmail.com",
-//     phone: "+38766230926",
-//   },
-//   {
-//     firstName: "Patrick",
-//     lastName: "Mahomes",
-//     email: "patmahomes@gmail.com",
-//     phone: "+901234567",
-//   },
-//   {
-//     firstName: "Russel",
-//     lastName: "Wilson",
-//     email: "dangeruss@gmail.com",
-//     phone: "+18005551234",
-//   },
-// ];
 
 const modalAddEl = document.querySelector(".modal-add");
 const addContactForm = document.querySelector(".add-contact-form");
@@ -191,10 +171,10 @@ modalCloseEls.forEach((el) => el.addEventListener("click", closeModal));
 // VALIDATION
 function validateForm(form) {
   // Select all input elements
-  const firstName = form.querySelector(".firstname");
-  const lastName = form.querySelector(".lastname");
-  const email = form.querySelector(".email");
-  const phone = form.querySelector(".phone");
+  const firstName = form.querySelector(".input-firstname");
+  const lastName = form.querySelector(".input-lastname");
+  const email = form.querySelector(".input-email");
+  const phone = form.querySelector(".input-phone");
 
   // Validate each element
   const firstNameValid = validate(
@@ -219,27 +199,6 @@ function validateForm(form) {
   return firstNameValid && lastNameValid && emailValid && phoneValid;
 }
 
-// validateForm(addContactForm);
-// validateForm(editContactForm);
-
-// function validateForm(form) {
-//   const inputEls = form.querySelectorAll(".input-field");
-//   console.log(inputEls);
-//   inputEls.forEach((el) => {
-//     el.addEventListener("keyup", function () {
-//       if (
-//         el.classList.includes(".firstname") ||
-//         el.classList.includes(".lastname")
-//       )
-//         validateElement(el, el.value.length < 3 || el.value.length > 20);
-//       else if (el.classList.includes(".email"))
-//         validateElement(el, !el.value.includes("@"));
-//       else if (el.classList.includes(".phone"))
-//         validateElement(el, !/\+[0-9]{10}[0-9]+/.test(el.value));
-//     });
-//   });
-// }
-
 function validate(el, test) {
   // If test not passed - display error message
   if (!test) {
@@ -254,16 +213,3 @@ function validate(el, test) {
   }
   return true;
 }
-
-// function anyFieldEmpty(e) {
-//   const form = e.target.closest("form");
-//   const inputFieldEls = form.querySelectorAll(".input-field");
-
-//   let state = false;
-//   inputFieldEls.forEach((el) => {
-//     if (el.value == "") {
-//       state = true;
-//     }
-//   });
-//   return state;
-// }
