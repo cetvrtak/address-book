@@ -103,6 +103,7 @@ function addContact(newContact) {
   contacts.push(newContact);
   insertContactHTML(newContact, contacts.length - 1);
   clearInputFields();
+  updateStorage();
 }
 function clearInputFields() {
   const inputFields = modalAddEl.querySelectorAll(".input-field");
@@ -114,10 +115,12 @@ function saveContact(id) {
   contacts[id].email = editEmailEl.value;
   contacts[id].phone = editPhoneEl.value;
   displayContacts();
+  updateStorage();
 }
 function deleteContact(id) {
   contacts.splice(id, 1);
   displayContacts();
+  updateStorage();
 }
 function showContactDetails(id) {
   openFullnameEl.textContent = `${contacts[id].firstName} ${contacts[id].lastName}`;
@@ -136,7 +139,6 @@ window.addEventListener("load", () => {
   }
   displayContacts();
 });
-window.addEventListener("beforeunload", updateStorage);
 
 addNewContact.addEventListener("click", openModal.bind(modalAddEl));
 
