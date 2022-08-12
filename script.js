@@ -72,6 +72,9 @@ function displayContacts() {
 function openModal() {
   this.classList.remove("hidden");
   overlayEl.classList.remove("hidden");
+  this.querySelectorAll(".validation-box").forEach((box) =>
+    box.classList.add("invisible")
+  );
 }
 function closeModal() {
   modalAddEl.classList.add("hidden");
